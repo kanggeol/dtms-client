@@ -1,29 +1,26 @@
-import React, { useState } from 'react';
-import LoginForm from './LoginForm';
-import MainPage from './MainPage';
+import React from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Join from "./pages/Join";
+import User from "./pages/User";
+import About from "./pages/About";
+import LoginContextProvider from "./contexts/LoginContextProvider";
 
 const App = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [userId, setUserId] = useState('');
-
-  const handleLogin = (user) => {
-    // 실제 로그인 로직을 여기에 추가
-    // 성공 시 setLoggedIn(true) 등으로 상태 변경
-
-    // 여기서는 간단히 userId을 설정하고 로그인 상태 변경
-    setUserId(user);
-    setLoggedIn(true);
-  };
-
-  return (
-      <div>
-        {loggedIn ? (
-            <MainPage userId={userId} />
-        ) : (
-            <LoginForm onLogin={handleLogin} />
-        )}
-      </div>
-  );
+    return (
+        <BrowserRouter>
+            <LoginContextProvider>
+                <Routes>
+                    <Route path="/" element={<Home/>}></Route>
+                    <Route path="/Login" element={<Login/>}></Route>
+                    <Route path="/Join" element={<Join/>}></Route>
+                    <Route path="/User" element={<User/>}></Route>
+                    <Route path="/About" element={<About/>}></Route>
+                </Routes>
+            </LoginContextProvider>
+        </BrowserRouter>
+    );
 };
 
 export default App;
