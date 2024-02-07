@@ -1,23 +1,23 @@
 import React from 'react';
-import {join} from "../apis/auth";
 
-const JoinForm = () => {
-    const onJoin = (e) => {
+
+const UserForm = ({userInfo, updateUser, deleteUser}) => {
+    const onUpdate = (e) => {
         e.preventDefault();
-        const form = e.tartget;
+        const form = e.target;
         const userId = form.username.value;
         const password = form.password.value;
         const name = form.name.value;
         const email = form.email.value;
         console.log(userId, password, name, email);
 
-        join({userId, password, name, email});
+        updateUser({userId, password, name, email});
     }
     return (
         <div className="login-form">
-            <h2 className="login-form__title">Login</h2>
+            <h2 className="login-form__title">UserInfo</h2>
 
-            <form className="login-form__form" onSubmit={(e) => onJoin(e)}>
+            <form className="login-form__form" onSubmit={(e) => onUpdate(e)}>
                 <div>
                     <label htmlFor="name">Username</label>
                     <input className="login-form__input" type="text"
@@ -26,6 +26,8 @@ const JoinForm = () => {
                            name="username"
                            autoComplete="username"
                            required
+                           readOnly
+                           defaultValue={userInfo?.userId}
                     />
                 </div>
 
@@ -47,6 +49,7 @@ const JoinForm = () => {
                            name="name"
                            autoComplete="name"
                            required
+                           defaultValue={userInfo?.name}
                     />
                 </div>
                 <div>
@@ -57,13 +60,16 @@ const JoinForm = () => {
                            name="email"
                            autoComplete="email"
                            required
+                           defaultValue={userInfo?.email}
                     />
                 </div>
 
-                <button className="login-form__button" type="submit" onClick={(e) => onJoin(e)}>Join</button>
+                <button className="login-form__button" type="submit" >정보 수정</button>
+                <button className="login-form__button" type="button" onClick={(e) => deleteUser(e)}>정보 삭제</button>
             </form>
         </div>
     );
 };
 
-export default JoinForm;
+export default UserForm;
+

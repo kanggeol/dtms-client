@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {LoginContext} from "../contexts/LoginContextProvider";
 
 const Header = () => {
-    const {isLogin,LogOut} = useContext(LoginContext);
+    const {isLogin,LogIn, LogOut} = useContext(LoginContext);
 
     return (
         <div>
@@ -21,6 +21,7 @@ const Header = () => {
                         :
                         <ul>
                             <li><Link to="/User">MyPage</Link></li>
+                            <li><Link to="/About">Admin</Link></li>
                             <li>
                                 <button className='link' onClick={() => LogOut()}>LogOut</button>
                             </li>

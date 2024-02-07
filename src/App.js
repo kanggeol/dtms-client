@@ -6,6 +6,7 @@ import Join from "./pages/Join";
 import User from "./pages/User";
 import About from "./pages/About";
 import LoginContextProvider from "./contexts/LoginContextProvider";
+import Admin from "./pages/Admin";
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
                     <Route path="/Join" element={<Join/>}></Route>
                     <Route path="/User" element={<User/>}></Route>
                     <Route path="/About" element={<About/>}></Route>
+                    <Route path="/Admin" element={<Admin/>}></Route>
                 </Routes>
             </LoginContextProvider>
         </BrowserRouter>

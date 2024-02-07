@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from "../components/Header";
+import LoginContextConsumer from "../contexts/LoginContextConsumer";
 
 const About = () => {
     return (
@@ -9,6 +10,7 @@ const About = () => {
                 <h1>About</h1>
                 <hr/>
                 <h2>About Page</h2>
+                <LoginContextConsumer />
             </div>
         </>
     );
